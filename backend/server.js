@@ -35,9 +35,13 @@ app.post('/api/parking/update', (req, res) => {
   console.log(`Parking lot ${parkingLotId}: ${parkingLot.availableSpots} spots available`);
   res.sendStatus(200);
 });
+
 app.get('/api/parking', (req, res) => {
   res.json(parkingLots);
 });
-app.listen(3000, () => {
-  console.log('Backend server running on http://localhost:3000');
+
+// Use environment variable for port or default to 3000
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Backend server running on http://localhost:${PORT}`);
 });
